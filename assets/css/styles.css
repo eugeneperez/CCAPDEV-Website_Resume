@@ -45,3 +45,8 @@ body {
   margin: 0px 10em 0px 10em;
 }
 
+#pic {
+  border-radius: 50%;
+  padding-top: 20px;
+}
+
