@@ -25,19 +25,15 @@ body {
 
 .container {
   max-width: 1280px;
-  padding: 60px 100px;
+  padding: 10px 100px;
   background-color: white;
 }
 
-.text-white {
+h2 {
   text-align: center;
   color: black;
   border-bottom: 1px solid lightgrey;
   padding: 20px;
-}
-
-.text-white {
-  color: black !important;
 }
 
 #Intro .col {
@@ -48,5 +44,36 @@ body {
 #pic {
   border-radius: 50%;
   padding-top: 20px;
+}
+
+h3 {
+}
+
+#Education .col {
+  text-align: center;
+}
+
+#Education {
+  background-color: rgb(245, 203, 113);
+}
+
+#MP {
+  background-color: rgb(245, 203, 113);
+}
+
+#Education h2 {
+  border-bottom: 1px solid grey;
+}
+
+#Education hr {
+  border-bottom: 1px solid grey;
+}
+
+#MP h2 {
+  border-bottom: 1px solid grey;
+}
+
+#MP hr {
+  border-bottom: 1px solid grey;
 }
 
