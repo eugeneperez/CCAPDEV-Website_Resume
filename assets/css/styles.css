@@ -1,0 +1,47 @@
+body {
+  background-color: rgb(1, 68, 94);
+  margin: 0 auto;
+}
+
+#header {
+  text-align: center;
+  padding: 100px;
+  background-image: url(../../assets/img/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#header .jumbotron {
+  border-radius: 20px;
+  padding: 200px;
+  font-size: 30px;
+}
+
+#header h1 {
+  padding: 20px;
+  border-bottom: 1px solid lightgrey;
+  font-size: 70px;
+}
+
+.container {
+  max-width: 1280px;
+  padding: 60px 100px;
+  background-color: white;
+}
+
+.text-white {
+  text-align: center;
+  color: black;
+  border-bottom: 1px solid lightgrey;
+  padding: 20px;
+}
+
+.text-white {
+  color: black !important;
+}
+
+#Intro .col {
+  text-align: center;
+  margin: 0px 10em 0px 10em;
+}
+
