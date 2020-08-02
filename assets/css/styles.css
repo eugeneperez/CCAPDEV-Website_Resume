@@ -77,3 +77,19 @@ h3 {
   border-bottom: 1px solid grey;
 }
 
+#Organizations .col {
+  text-align: center;
+}
+
+#MP .col {
+  text-align: center;
+}
+
+#Contact .col {
+  text-align: center;
+}
+
+.navbar.navbar-light.navbar-expand-md {
+  background-color: white !important;
+}
+
