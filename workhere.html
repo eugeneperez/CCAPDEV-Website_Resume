@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Bootstrap Resume</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-md d-xl-flex">
+        <div class="container-fluid"><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-2"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse d-xl-flex justify-content-xl-end"
+                id="navcol-2">
+                <ul class="nav navbar-nav">
+                    <li class="nav-item" role="presentation"><a class="nav-link active bg-info border rounded-0 border-dark shadow-sm justify-content-xl-end" id="login" href="#">Login</a></li>
+                    <li class="nav-item" role="presentation"></li>
+                    <li class="nav-item" role="presentation"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="header">
+        <div class="jumbotron">
+            <h1>Eugene Perez</h1>
+            <p>Website Resume</p>
+        </div>
+    </div>
+    <div class="container" id="Intro"><h2>Profile Introduction</h2>
+
+    </div>
+    <div class="container" id="Education"><h2>Education</h2></div>
+    <div class="container" id="Organizations"><h2>Organizations</h2></div>
+    <div class="container" id="MP"><h2>Machine Projects</h2></div>
+    <div class="container" id="Contact"><h2>Contact Information</h2></div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+         var firebaseConfig = {
+            apiKey: "AIzaSyCNKEeq_18beqDWGG4Wrjz9Ox8qGgvkdKc",
+            authDomain: "websiteresume-6916c.firebaseapp.com",
+            databaseURL: "https://websiteresume-6916c.firebaseio.com",
+            projectId: "websiteresume-6916c",
+            storageBucket: "websiteresume-6916c.appspot.com",
+            messagingSenderId: "167352957748",
+            appId: "1:167352957748:web:97fb43b6e0ae6018104361"
+        };
+         // Initialize Firebase
+        var defaultProject = firebase.initializeApp(firebaseConfig);
+
+        var db = firebase.firestore();
+
+        const intro = document.querySelector('#Intro');
+
+        function renderIntro(doc){
+            let row1 = document.createElement('div');
+            row1.setAttribute("class", "row");
+            let row2 = document.createElement('div');
+            row2.setAttribute("class", "row");
+            let col1 = document.createElement('div');
+            col1.setAttribute("class", "col");
+            let col2 = document.createElement('div');
+            col2.setAttribute("class", "col");
+
+            let pic = document.createElement('img');
+            pic.setAttribute('src', doc.data().dp);
+            pic.setAttribute("id", "pic")
+            let text = document.createElement('p');
+            text.textContent = doc.data().value + "\r\n";
+            
+            col1.appendChild(pic);
+            col2.appendChild(text);
+
+            row1.innerHTML += "<br>";
+            row1.appendChild(col1);
+            row2.appendChild(col2);
+            row1.innerHTML += "<br><br>";
+            row2.innerHTML += "<br>";
+
+            intro.appendChild(row1);
+            intro.appendChild(row2);
+        }
+
+        const edu = document.querySelector('#Education');
+        
+        function renderEdu(doc){
+            let row = document.createElement('div');
+            row.setAttribute("class", "row");
+            let col1 = document.createElement('div');
+            col1.setAttribute("id", "school");
+            col1.setAttribute("class", "col");
+            let col2 = document.createElement('div');
+            col2.setAttribute("id", "details");
+            col2.setAttribute("class", "col");
+
+                let school = document.createElement('span');
+                school.setAttribute("id", "school")
+                let course = document.createElement('span');
+                course.setAttribute("id", "course");
+                let yearE = document.createElement('span');
+                yearE.setAttribute("id", "yearE")
+                let yearS = document.createElement('span');
+                yearS.setAttribute("id", "yearS");
+
+                school.textContent = doc.data().School;
+                course.textContent = "Course: " + doc.data().Course + "\r\n";
+                yearE.textContent = "Year Ended: " + doc.data().YearEnded + "\r\n";
+                yearS.textContent = "Year Started: " + doc.data().YearStarted + "\r\n";
+
+                col1.appendChild(school);
+                col2.appendChild(course);
+                col2.innerHTML += "<br/>";
+                col2.appendChild(yearE);
+                col2.innerHTML += "<br>";
+                col2.appendChild(yearS);
+                col2.innerHTML += "<br>";
+
+                row.appendChild(col1);
+                row.appendChild(col2);
+
+                edu.appendChild(row);
+                edu.innerHTML += "<br>";
+            }
+
+            const org = document.querySelector('#Organizations');
+
+            function renderOrg(doc){
+                let row = document.createElement('div');
+                row.setAttribute("class", "row");
+                let col1 = document.createElement('div');
+                col1.setAttribute("class", "col");
+                col1.setAttribute("id", "name");
+                let col2 = document.createElement('div');
+                col2.setAttribute("class", "col");
+                col2.setAttribute("id", "details");
+
+                let name = document.createElement('span');
+                name.setAttribute("id", "name");
+                let position = document.createElement('span');
+                position.setAttribute("id", "position");
+                let yearJ = document.createElement('span');
+                yearJ.setAttribute("id", "yearJoined");
+
+                name.textContent = doc.data().Name;
+                position.textContent = "Position: " + doc.data().Position + "\r\n";
+                yearJ.textContent = "Year Joined: " + doc.data().YearJoined + "\r\n";
+
+                col1.appendChild(name);
+                col2.appendChild(position);
+                col2.innerHTML += "<br/>";
+                col2.appendChild(yearJ);
+                col2.innerHTML += "<br/>";
+
+                row.appendChild(col1);
+                row.appendChild(col2);
+
+                org.appendChild(row);
+                org.innerHTML += "<br>";
+            }
+
+            const mp = document.querySelector('#MP');
+
+            function renderMP(doc){
+                let row = document.createElement('div');
+                row.setAttribute("class", "row");
+                let col1 = document.createElement('div');
+                col1.setAttribute("class", "col");
+                col1.setAttribute("id", "work");
+
+                let name = document.createElement('span');
+                name.setAttribute("id", "name");
+                let classes = document.createElement('span');
+                classes.setAttribute("id", "classes");
+                let link = document.createElement('a');
+                link.setAttribute("id", "dlink");
+                link.setAttribute('href', doc.data().link);
+
+                name.textContent = "Project Name: " + doc.data().Name + "\r\n";
+                name.innerHTML += "<br>";
+                classes.textContent = "Class: " + doc.data().Class + "\r\n";
+                classes.innerHTML += "<br>";
+                link.innerText = "Download Here";
+                link.innerHTML += "<br>";
+
+                col1.appendChild(name);
+                col1.appendChild(classes);
+                col1.appendChild(link);
+
+                row.appendChild(col1);
+                mp.appendChild(row);
+                mp.innerHTML += "<br>";
+            }
+
+            const contacts = document.querySelector('#Contact');
+
+            function renderContacts(doc){
+                let row = document.createElement('div');
+                row.setAttribute("class", "row");
+                let col1 = document.createElement('div');
+                col1.setAttribute("class", "col");
+                col1.setAttribute("id", "contact");
+
+                let to = document.createElement('span');
+                to.setAttribute("id", "provide");
+                let link = document.createElement('a');
+                link.setAttribute('href', doc.data().link);
+                link.setAttribute("id", "clink");
+
+                to.textContent = doc.data().to + ": " + "\r\n";
+                link.textContent = doc.data().link + "\r\n";
+
+                contacts.innerHTML += "<br>";
+                col1.appendChild(to);
+                col1.appendChild(link);
+                row.appendChild(col1);
+                contacts.appendChild(row);
+                contacts.innerHTML += "<br>";
+            }
+
+            db.collection("others").get().then(function(snapshot){
+                snapshot.forEach(function(doc){
+                    renderIntro(doc);
+                })
+            })
+
+            db.collection("Educational Background").get().then(function(snapshot){
+                snapshot.forEach(function(doc){
+                        renderEdu(doc);
+                })
+            });
+
+            db.collection("Organizations").get().then(function(snapshot){
+                snapshot.forEach(function(doc){
+                    renderOrg(doc);
+                })
+            });
+
+            db.collection("Previous Works").get().then(function(snapshot){
+                snapshot.forEach(function(doc){
+                    renderMP(doc);
+                })
+            })
+
+            db.collection("Links").get().then(function(snapshot){
+                snapshot.forEach(function(doc){
+                    renderContacts(doc);
+                })
+            })
+
+    </script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
