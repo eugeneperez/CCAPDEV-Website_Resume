@@ -93,3 +93,9 @@ h3 {
   background-color: white !important;
 }
 
+.row {
+  border: 1px solid grey;
+  padding: 50px;
+  margin: 0px 100px 0px 100px !important;
+}
+
