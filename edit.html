@@ -240,7 +240,7 @@
         }
 
         function delEdu(x){
-            db.collection('Educational Background').doc(x).delete().then(funcRenderEdu());
+            db.collection('Educational Background').doc(x).delete().then(function(){funcRenderEdu()});
         }
 
             const org = document.querySelector('#Organizations');
